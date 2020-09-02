@@ -5,12 +5,12 @@ Reads arbitrary xml formats and saves as csv. The yaml file used to create the c
 ## Creating the Environment
 On MacOS and Linux:
 ```
-conad env create -f environment.yml
+conda env create -f environment.yml
 source activate xml_to_csv
 ```
 Or
 ```
-conad env create -f environment.yml
+conda env create -f environment.yml
 conda activate xml_to_csv
 ```
 
