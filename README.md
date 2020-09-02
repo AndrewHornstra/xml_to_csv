@@ -14,10 +14,10 @@ conad env create -f environment.yml
 conda activate xml_to_csv
 ```
 
-Pandas and Numpy dependencies might be removed in the future. Unsure about xmltodict. Make sure you install xmltodict (in a virtual environment, yaml included).
 
 ## Dependencies
-This code has been tested in this environment.
+This code has been tested in this environment. Pandas and Numpy dependencies might be removed in the future. Unsure about xmltodict.
+
 
 Python 3 3.7.x, 3.8.x
 Numpy 1.19.1
