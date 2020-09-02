@@ -20,10 +20,14 @@ This code has been tested in this environment. Pandas and Numpy dependencies mig
 
 
 Python 3 3.7.x, 3.8.x
+
 Numpy 1.19.1
+
 Pandas 1.1.0
+
 xmltodict 0.12.0
 
 ### OS
 MacOS Catalina 10.15.6
+
 Windows 10 July 2020
