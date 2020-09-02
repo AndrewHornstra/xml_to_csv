@@ -1,0 +1,6 @@
+name: xml_to_csv
+dependencies:
+  - python=3.8
+  - numpy=1.19.0
+  - pandas=1.1.0
+  - xmltodict=0.12.0

@@ -1,3 +1,4 @@
+import os
 import numpy as np
 import pandas as pd
 from collections import OrderedDict, defaultdict
@@ -10,7 +11,7 @@ def get_all_cols(x: OrderedDict, prefix: str='', page_set: set=None) -> set:
     Iterates through a nested ordered dict and returns a set of columns which would be required
     for each "page" of data, where pages are "delimited" by the element tag "numerical data".
 
-    Example data:
+    Example data (based off of actual data for which this was used):
 
     OrderedDict([
 
@@ -24,14 +25,14 @@ def get_all_cols(x: OrderedDict, prefix: str='', page_set: set=None) -> set:
 
              ('nested OrderedDict with possible duplicate columns',
                   OrderedDict([('Party',
-                               [OrderedDict([('Role', 'something else'),
-                                             ('PartyType', 'something else'),
-                                             ('RepresentationType', 'something else'),
-                                             ('Undertenant', 'something else')]),
-                                OrderedDict([('Role', 'something else'),
-                                             ('PartyType', 'something else'),
-                                             ('RepresentationType', 'something else'),
-                                             ('Undertenant', 'something else')])])])),
+                               [OrderedDict([('Role', 'something else 1'),
+                                             ('PartyType', 'something else 1'),
+                                             ('RepresentationType', 'something else 1'),
+                                             ('Undertenant', 'something else 1')]),
+                                OrderedDict([('Role', 'something else 2'),
+                                             ('PartyType', 'something else 2'),
+                                             ('RepresentationType', 'something else 2'),
+                                             ('Undertenant', 'something else 2')])])])),
 
              ('this is just a list because this data is bad',
               ['list item 1', 'list item 2'])
@@ -116,6 +117,10 @@ def create_data(x: OrderedDict, prefix: str='', page_df: pd.DataFrame=None, all_
     return page_df
 
 def main(input: str, output: str, delim: str=','):
+    if not input.endswith('.xml'):
+        input += '.xml'
+    if not output.endswith('.csv'):
+        output += '.csv'
     with open(input, 'r') as f:
         """All of the data is actually stored in Extract/Indexes/Index of the parsed object.
         They are read in as list of (nested) ordered dict objects."""
@@ -141,10 +146,8 @@ if __name__ == "__main__":
     arbitrary_nested_xml_to_df input[.xml] output[.csv]\n
     Examples:\n
     arbitrary_nested_xml_to_df my_annoying_xml my_better_csv\n\n
-    arbitrary_nested_xml_to_df my_weird_xml.xml preferable_output.csv\n\n
-
+    arbitrary_nested_xml_to_df my_weird_xml.xml preferable_output.csv -d '|'\n\n
     """
-    # NEED DELIMITER OPTION
     parser = argparse.ArgumentParser(
     description="Takes an XML and returns a CSV."
     )
